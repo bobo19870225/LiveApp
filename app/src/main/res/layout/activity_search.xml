@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.zaomeng.zaomeng.view_model.SearchViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:onClick="@{()->model.cancel()}"
+                android:text="取消"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/text1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_toStartOf="@+id/cancel"
+                android:layout_toLeftOf="@+id/cancel"
+                android:background="@drawable/bg_button_corner_bc"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <ImageView
+                    android:id="@+id/icon_search"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{()->model.search()}"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/search" />
+                <!--android:imeOptions="actionNone"  //输入框右侧不带任何提示
+                android:imeOptions="actionGo"    //右下角按键内容为'开始'
+                android:imeOptions="actionSearch"  //右下角按键为放大镜图片，搜索
+                android:imeOptions="actionSend"    //右下角按键内容为'发送'
+                android:imeOptions="actionNext"   //右下角按键内容为'下一步'
+                android:imeOptions="actionDone"  //右下角按键内容为'完成'
+                -->
+                <EditText
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toEndOf="@+id/icon_search"
+                    android:layout_toRightOf="@+id/icon_search"
+                    android:background="@color/bg_color"
+                    android:gravity="center_vertical"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:text="@={model.ldSearchWord}"
+                    android:textSize="@dimen/text3">
+
+                </EditText>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_color"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="热门搜索"
+                    android:textSize="@dimen/text2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_hot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_color">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/delete"
+                        android:layout_toLeftOf="@+id/delete"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/layout_padding"
+                        android:paddingLeft="@dimen/layout_padding"
+                        android:text="@string/search_history"
+                        android:textSize="@dimen/text2" />
+
+                    <ImageView
+                        android:id="@+id/delete"
+                        android:layout_width="@dimen/small_image"
+                        android:layout_height="@dimen/small_image"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:onClick="@{()->model.clean()}"
+                        android:padding="@dimen/image_padding"
+                        android:src="@mipmap/delete" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

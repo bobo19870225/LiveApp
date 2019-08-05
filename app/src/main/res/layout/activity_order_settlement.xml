@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.zaomeng.zaomeng.view_model.OrderSettlementVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <include
+            android:id="@+id/tt"
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom"
+            android:layout_below="@+id/tt"
+            android:layout_marginTop="@dimen/line"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/tt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@android:color/white">
+
+                    <ImageView
+                        android:id="@+id/line"
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/them" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/line"
+                        android:layout_toRightOf="@+id/line"
+                        android:text="@string/address"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text2" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tt_address"
+                    android:background="@android:color/white"
+                    android:onClick="@{()->model.choseAddress()}"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{model.ldAddress}"
+                        android:textSize="@dimen/text3" />
+
+                    <TextView
+                        android:id="@+id/use"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/address"
+                        android:text="@{model.ldUser}"
+                        android:textSize="@dimen/text3" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/address"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/use"
+                        android:layout_toRightOf="@+id/use"
+                        android:text="@{model.ldPhone}"
+                        android:textSize="@dimen/text3" />
+                </RelativeLayout>
+                <!--<com.zaomeng.zaomeng.view.custom_view.RecyclerViewForScrollView-->
+                <!--android:id="@+id/list"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/tt_address"-->
+                <!--android:paddingStart="16dp"-->
+                <!--android:paddingLeft="16dp"-->
+                <!--android:scrollbars="none"-->
+                <!--app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">-->
+
+                <!--</com.zaomeng.zaomeng.view.custom_view.RecyclerViewForScrollView>-->
+
+                <RelativeLayout
+                    android:id="@+id/tt_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/rl_address"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/white">
+
+                    <ImageView
+                        android:id="@+id/line1"
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/them" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/line1"
+                        android:layout_toRightOf="@+id/line1"
+                        android:text="商品"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text2" />
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_toStartOf="@+id/chose_time"-->
+                    <!--android:layout_toLeftOf="@+id/chose_time"-->
+                    <!--android:text="今天 13：00-16：00"-->
+                    <!--android:textColor="@color/them_color" />-->
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/chose_time"-->
+                    <!--android:layout_width="@dimen/image"-->
+                    <!--android:layout_height="@dimen/image"-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:padding="@dimen/image_padding"-->
+                    <!--android:src="@mipmap/more" />-->
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/tt_time"
+                    android:layout_marginTop="@dimen/line"
+                    android:background="@android:color/white"
+                    android:paddingStart="16dp"
+                    android:paddingLeft="16dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/total_number"
+                        android:layout_toLeftOf="@+id/total_number">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <TextView
+                        android:id="@+id/total_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/more_detail"
+                        android:layout_toLeftOf="@+id/more_detail"
+                        android:text="@{model.ldOrderNumber}" />
+
+                    <ImageView
+                        android:id="@+id/more_detail"
+                        android:layout_width="@dimen/image"
+                        android:layout_height="@dimen/image"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/image_padding"
+                        android:src="@mipmap/more" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tt_pay_way"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/goods"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/white">
+
+                    <ImageView
+                        android:id="@+id/line2"
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/them" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/line2"
+                        android:layout_toRightOf="@+id/line2"
+                        android:text="支付方式"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text2" />
+                </RelativeLayout>
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tt_pay_way"
+                    android:background="@android:color/white"
+                    android:paddingStart="16dp"
+                    android:paddingLeft="16dp">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_weixin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:drawableStart="@mipmap/weixinzhifu"
+                        android:drawableLeft="@mipmap/weixinzhifu"
+                        android:drawablePadding="8dp"
+                        android:text="微信支付"
+                        android:textSize="@dimen/text3" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_zfb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@mipmap/alipay"
+                        android:drawableLeft="@mipmap/alipay"
+                        android:drawablePadding="8dp"
+                        android:text="支付宝支付"
+                        android:textSize="@dimen/text3" />
+
+
+                </RadioGroup>
+
+
+                <RelativeLayout
+                    android:id="@+id/tt_uhq"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/radio_group"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/white"
+                    android:onClick="@{()->model.bonus()}"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="12dp"
+                        android:text="优惠券"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text3" />
+
+                    <TextView
+                        android:id="@+id/bonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@{model.ldBonus}"
+                        android:textSize="@dimen/text3" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tt_bz"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/tt_uhq"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/white"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="备注"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text3" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_toEndOf="@+id/text"
+                        android:layout_toRightOf="@+id/text"
+                        android:background="@android:color/white"
+                        android:hint="选填"
+                        android:textSize="@dimen/text3" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tt_bz"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/white"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/ttGoodsPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="商品价格："
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text3" />
+
+                    <TextView
+                        android:id="@+id/goodsPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ttGoodsPrice"
+                        android:layout_toRightOf="@+id/ttGoodsPrice"
+                        android:minWidth="72dp"
+                        android:textColor="@color/them_color"
+                        android:textSize="@dimen/text3" />
+
+                    <TextView
+                        android:id="@+id/ttDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ttGoodsPrice"
+                        android:layout_marginTop="4dp"
+                        android:text="优惠金额："
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text3" />
+
+                    <TextView
+                        android:id="@+id/discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ttGoodsPrice"
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/ttDiscount"
+                        android:layout_toRightOf="@+id/ttDiscount"
+                        android:minWidth="72dp"
+                        android:textColor="@color/them_color"
+                        android:textSize="@dimen/text3" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/white"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tt_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="实付："
+                    android:textSize="@dimen/text3" />
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/tt_total"
+                    android:layout_toRightOf="@+id/tt_total"
+                    android:minWidth="72dp"
+                    android:textColor="@color/text_them"
+                    android:textSize="@dimen/text3" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/them_color"
+                android:gravity="center"
+                android:onClick="@{()->model.submitOrder()}"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="提交订单"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text1" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

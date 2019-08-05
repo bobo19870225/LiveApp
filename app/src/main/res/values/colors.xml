@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF9933</color>
+    <color name="colorPrimaryDark">#FF9933</color>
+    <color name="colorAccent">#FF9933</color>
+    <color name="item_border_color">#666666</color>
+    <color name="divide_color">#666666</color>
+    <color name="item_default_color">#EEEEEE</color>
+    <color name="item_pressed_color">#CCCCCC</color>
+    <color name="item_activated_color">#77CEEE</color>
+    <color name="item_location_color">#C0FFFFFF</color>
+    <color name="bg_color">#F2F2F2</color>
+    <color name="bg_color_tm">#80F2F2F2</color>
+    <color name="them_color">#FF9933</color>
+    <color name="line">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="tab_blue">#FF0084FF</color>
+    <color name="main_gray">#FFDDDDDD</color>
+    <color name="text_white">#FAF9F9</color>
+    <color name="text_black">#000000</color>
+    <color name="text_gray">#707070</color>
+    <color name="gray">#515151</color>
+    <color name="white">#FDF9F9</color>
+    <color name="text_2">#6E6E6D</color>
+    <color name="text_3">#2A2929</color>
+    <color name="text_them">#FF9933</color>
+    <color name="text_4">#3B3B3B</color>
+    <color name="text_main">#333333</color>
+    <color name="test">#e94220</color>
+</resources>

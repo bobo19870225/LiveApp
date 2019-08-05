@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.zaomeng.zaomeng.view_model.MainFragmentVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_location"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/bg_button_corner_bc"
+                android:onClick="@{()->model.location()}"
+                android:paddingLeft="@dimen/layout_padding"
+                android:paddingEnd="@dimen/layout_padding"
+                android:paddingRight="@dimen/layout_padding">
+
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@+id/dingwei"
+                    android:layout_toRightOf="@+id/dingwei"
+                    android:gravity="center"
+                    android:text="@{model.ldLocation}"
+                    android:textSize="@dimen/text3" />
+
+                <ImageView
+                    android:id="@+id/dingwei"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/dingwei" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toStartOf="@+id/icon_msg"
+                android:layout_toLeftOf="@+id/icon_msg"
+                android:layout_toEndOf="@+id/rl_location"
+                android:layout_toRightOf="@+id/rl_location"
+                android:background="@drawable/bg_button_corner_bc"
+                android:gravity="center"
+                android:hint="@string/fast_search_goods"
+                android:onClick="@{()->model.search()}"
+                android:textSize="@dimen/text3" />
+
+            <ImageView
+                android:id="@+id/icon_msg"
+                android:layout_width="@dimen/image"
+                android:layout_height="@dimen/image"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:onClick="@{()->model.msg()}"
+                android:padding="4dp"
+                android:src="@mipmap/xiaoxi" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@color/bg_color" />
+
+        <com.zaomeng.zaomeng.view.custom_view.PagerSlidingTabStrip
+            android:id="@+id/table_strip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height"
+            app:pstsDividerPadding="@dimen/divide_padding"
+            app:pstsIndicatorColor="@color/them_color"
+            app:pstsIndicatorHeight="@dimen/indicator_height"
+            app:pstsSelectedTabTextColor="@color/them_color"
+            app:pstsTextSize="@dimen/text1"
+            app:pstsUnderlineColor="@color/transparent"
+            app:pstsUnselectedTextColor="@android:color/black">
+
+        </com.zaomeng.zaomeng.view.custom_view.PagerSlidingTabStrip>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

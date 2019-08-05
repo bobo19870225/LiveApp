@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@mipmap/unhome"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/sortFragment"
+        android:icon="@mipmap/unfenlei"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/treeFragment"
+        android:icon="@mipmap/undongtai"
+        android:title="@string/title_notifications" />
+    <item
+        android:id="@+id/shoppingCartFragment"
+        android:icon="@mipmap/ungouwuche"
+        android:title="@string/shopping_cart" />
+    <item
+        android:id="@+id/meFragment"
+        android:icon="@mipmap/unwo"
+        android:title="@string/title_activity_me" />
+
+</menu>

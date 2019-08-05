@@ -1,0 +1,160 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release {
+            storePassword '123456'
+            keyAlias = 'key0'
+            keyPassword '123456'
+            storeFile file('/Users/lushengbo/Desktop/appkey/zaoMeng.jsk')
+        }
+        debug {
+            storeFile file('/Users/lushengbo/Desktop/appkey/zaoMeng.jsk')
+            storePassword '123456'
+            keyAlias = 'key0'
+            keyPassword '123456'
+        }
+    }
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        applicationId "com.zaomeng.zaomeng"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "V1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk { //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "arm64-v8a", "x86_64", "mips", "mips64"
+            // 还可以添加   'mips', 'mips64'
+        }
+        vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.release
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    buildTypes {
+        release {
+            //在这里添加：
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+
+    // Support libraries
+    implementation deps.support.app_compat
+    implementation deps.support.v4
+    implementation deps.support.design
+    implementation deps.support.cardview
+    implementation deps.constraint_layout
+
+    // Architecture components
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    annotationProcessor deps.lifecycle.compiler
+    implementation deps.room.runtime
+    implementation deps.paging_ktx
+    annotationProcessor deps.room.compiler
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+//    androidTestImplementation deps.room.testing
+    androidTestImplementation deps.arch_core.testing
+    //dagger2
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    annotationProcessor deps.dagger.android_support_compiler
+    annotationProcessor deps.dagger.compiler
+    //Retrofit2
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.okhttp_logging_interceptor
+    //Glide
+    implementation deps.glide.runtime
+    implementation deps.glide.compiler
+    // Espresso UI Testing
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
+
+    // Resolve conflicts between main and test APK:
+    androidTestImplementation deps.support.annotations
+    androidTestImplementation deps.support.v4
+    androidTestImplementation deps.support.app_compat
+    androidTestImplementation deps.support.design
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.navigation:navigation-fragment:2.1.0-alpha01"
+    // For Kotlin use navigation-fragment-ktx
+    implementation "androidx.navigation:navigation-ui:2.1.0-alpha01" // For Kotlin use
+
+    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+// gradle
+//    implementation 'com.alibaba.android:tangram:3.3.6@aar'
+//    implementation('com.alibaba.android:virtualview:1.4.3@aar') {
+//        transitive true
+//        exclude group: 'com.android.support', module: 'appcompat'
+//        exclude group: 'com.android.support', module: 'appcompat-v7'
+//        exclude group: 'com.android.support', module: 'support-v7-recyclerview'
+//        exclude group: 'com.android.support', module: 'support-v4'
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//        exclude group: 'com.android.support', module: 'support-compat'
+//    }
+//    implementation('com.alibaba.android:vlayout:1.2.22@aar') {
+//        changing = true
+//    }
+//    implementation 'com.alibaba.android:ultraviewpager:1.0.7.8@aar'
+//// 最新版本引入了rxjava，需要自行添加rx依赖
+//    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+//    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+//    implementation 'com.squareup.picasso:picasso:2.5.2'
+//    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+//    小红点
+    implementation 'q.rorbin:badgeview:1.1.3'
+    //热词
+    implementation 'com.google.android:flexbox:1.1.0'
+    //万能适配器
+    implementation 'com.zhy:base-rvadapter:3.0.3'
+
+    // 支付宝 SDK AAR 包所需的配置
+    implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
+//微信支付
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+//    implementation 'org.xutils:xutils:3.3.36'
+    //动态权限
+    implementation 'com.lovedise:permissiongen:0.0.6'
+    //日历
+    implementation 'com.prolificinteractive:material-calendarview:1.4.2'
+    implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //等待框
+    implementation 'com.github.gittjy:LoadingDialog:1.0.2'
+//   2D地图so及jar
+    implementation 'com.amap.api:map2d:latest.integration'
+    //定位功能
+    implementation 'com.amap.api:location:latest.integration'
+}
